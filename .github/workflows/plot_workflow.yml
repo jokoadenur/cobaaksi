@@ -1,0 +1,19 @@
+name: R Workflow
+on:
+  push:
+    branches:
+      - main  # Ganti dengan nama branch utama Anda
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: '4.x'  # Ganti dengan versi R yang diinginkan
+    - name: Install dependencies
+      run: |
+        R -e 'install.packages(c("package1", "package2"), repos="https://cran.rstudio.com")'  # Sesuaikan dengan paket yang diperlukan
+    - name: Run R script
+      run: Rscript scripts/script.R  # Path menuju skrip R diubah di sini
